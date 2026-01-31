@@ -17,7 +17,6 @@ body {
     position: relative;
 }
 
-/* Video Background Styling */
 .vid-container {
     position: absolute;
     top: 0;
@@ -34,7 +33,6 @@ body {
     object-fit: cover;
 }
 
-/* Time Select Buttons */
 .time-select {
     height: 80%;
     display: flex;
@@ -60,7 +58,6 @@ body {
     color: black;
 }
 
-/* Player Interface */
 .player-container {
     position: relative;
     height: 80%;
@@ -92,7 +89,6 @@ body {
     z-index: 5;
 }
 
-/* Sound Picker Buttons */
 .sound-picker {
     height: 80%;
     display: flex;

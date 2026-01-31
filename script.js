@@ -8,7 +8,7 @@ const app = () => {
     const sounds = document.querySelectorAll('.sound-picker button');
     // Time Display
     const timeDisplay = document.querySelector('.time-display');
-    // Time Select Buttons (Smaller, Medium, Long)
+    // Time Select Buttons
     const timeSelect = document.querySelectorAll('.time-select button');
     
     // Get the length of the outline for animation
@@ -42,7 +42,7 @@ const app = () => {
             let minutes = Math.floor(fakeDuration / 60);
             let seconds = Math.floor(fakeDuration % 60);
             
-            // FIXED: Removed the "0" padding logic here so it matches "2:0" instead of "2:00"
+            // Logic to prevent 10:00 (keeps it as 10:0)
             timeDisplay.textContent = `${minutes}:${seconds}`;
         });
     });
@@ -50,8 +50,8 @@ const app = () => {
     // Helper function to toggle play/pause
     const checkPlaying = song => {
         if (song.paused) {
-            song.play().catch(error => console.log("Playback interrupted"));
-            video.play().catch(error => console.log("Playback interrupted"));
+            song.play().catch(e => console.log("Test Play Interrupted"));
+            video.play().catch(e => console.log("Test Play Interrupted"));
             play.src = './svg/pause.svg'; 
         } else {
             song.pause();
@@ -67,14 +67,11 @@ const app = () => {
         let seconds = Math.floor(elapsed % 60);
         let minutes = Math.floor(elapsed / 60);
 
-        // Animate the circle progress bar
         let progress = outlineLength - (currentTime / fakeDuration) * outlineLength;
         outline.style.strokeDashoffset = progress;
 
-        // FIXED: Removed the "0" padding logic here as well
         timeDisplay.textContent = `${minutes}:${seconds}`;
 
-        // Stop when time runs out
         if (currentTime >= fakeDuration) {
             song.pause();
             song.currentTime = 0;
