@@ -42,9 +42,7 @@ const app = () => {
             let minutes = Math.floor(fakeDuration / 60);
             let seconds = Math.floor(fakeDuration % 60);
             
-            if (seconds < 10) {
-                seconds = "0" + seconds;
-            }
+            // FIXED: Removed the "0" padding logic here so it matches "2:0" instead of "2:00"
             timeDisplay.textContent = `${minutes}:${seconds}`;
         });
     });
@@ -52,14 +50,13 @@ const app = () => {
     // Helper function to toggle play/pause
     const checkPlaying = song => {
         if (song.paused) {
-            // FIXED: Added .catch() to handle AbortError during testing
             song.play().catch(error => console.log("Playback interrupted"));
             video.play().catch(error => console.log("Playback interrupted"));
-            play.src = './svg/pause.svg';
+            play.src = './svg/pause.svg'; 
         } else {
             song.pause();
             video.pause();
-            play.src = './svg/play.svg';
+            play.src = './svg/play.svg'; 
         }
     };
 
@@ -74,10 +71,7 @@ const app = () => {
         let progress = outlineLength - (currentTime / fakeDuration) * outlineLength;
         outline.style.strokeDashoffset = progress;
 
-        // Update the time display
-        if (seconds < 10) {
-            seconds = "0" + seconds;
-        }
+        // FIXED: Removed the "0" padding logic here as well
         timeDisplay.textContent = `${minutes}:${seconds}`;
 
         // Stop when time runs out
