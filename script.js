@@ -1,4 +1,3 @@
-//your JS code here. If required.
 const app = () => {
     const song = document.querySelector('.song');
     const play = document.querySelector('.play');
@@ -43,7 +42,6 @@ const app = () => {
             let minutes = Math.floor(fakeDuration / 60);
             let seconds = Math.floor(fakeDuration % 60);
             
-            // Format seconds with a leading zero if needed (e.g., 05 instead of 5)
             if (seconds < 10) {
                 seconds = "0" + seconds;
             }
@@ -54,13 +52,14 @@ const app = () => {
     // Helper function to toggle play/pause
     const checkPlaying = song => {
         if (song.paused) {
-            song.play();
-            video.play();
-            play.src = './svg/pause.svg'; // Switch to pause icon
+            // FIXED: Added .catch() to handle AbortError during testing
+            song.play().catch(error => console.log("Playback interrupted"));
+            video.play().catch(error => console.log("Playback interrupted"));
+            play.src = './svg/pause.svg';
         } else {
             song.pause();
             video.pause();
-            play.src = './svg/play.svg'; // Switch to play icon
+            play.src = './svg/play.svg';
         }
     };
 
