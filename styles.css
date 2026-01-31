@@ -1,1 +1,114 @@
 /*  your css code here. If applicable */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+#app {
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+    position: relative;
+}
+
+/* Video Background Styling */
+.vid-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.vid-container video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Time Select Buttons */
+.time-select {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    z-index: 2; /* Ensures buttons are clickable over video */
+}
+
+.time-select button {
+    color: white;
+    width: 130px;
+    height: 50px;
+    background: none;
+    border: 2px solid white;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.time-select button:hover {
+    background: white;
+    color: black;
+}
+
+/* Player Interface */
+.player-container {
+    position: relative;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-container svg {
+    position: absolute;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.time-display {
+    position: absolute;
+    bottom: 10%;
+    font-size: 50px;
+}
+
+.play {
+    width: 100px; /* Adjust size based on your image */
+    height: 100px;
+    cursor: pointer;
+    z-index: 5;
+}
+
+/* Sound Picker Buttons */
+.sound-picker {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.sound-picker button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.sound-picker button img {
+    width: 70px; /* Adjust size based on your image */
+    height: 70px;
+    border-radius: 50%;
+}
